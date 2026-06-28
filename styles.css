@@ -1,0 +1,360 @@
+* { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; background: #f5f6fa; color: #333; }
+
+  .screen { display: none; min-height: 100vh; flex-direction: column; }
+  .screen.active { display: flex; }
+
+  /* ── LOGIN ── */
+  #login { background: #fff; flex-direction: row; min-height: 100vh; }
+  .login-left {
+    width: 56%; background: linear-gradient(135deg, #dff0fb 0%, #c8e4f5 100%);
+    display: flex; align-items: center; justify-content: center; padding: 40px;
+    position: relative; overflow: hidden;
+  }
+  .login-banner {
+    width: 100%; max-width: 520px; border-radius: 18px; overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0,80,160,0.13);
+  }
+  .login-banner img { width: 100%; display: block; }
+
+  .login-right {
+    width: 44%; display: flex; flex-direction: column;
+    align-items: center; justify-content: center; padding: 60px 50px;
+  }
+  .college-logo { width: 90px; height: 90px; margin-bottom: 18px; }
+  .college-logo img { width: 100%; height: 100%; object-fit: contain; border-radius: 50%; }
+  .login-title { font-size: 22px; font-weight: 700; color: #1a5fa8; margin-bottom: 28px; }
+  .login-title span { color: #f5a623; }
+  .login-form { width: 100%; max-width: 380px; }
+  .input-group {
+    display: flex; align-items: center; border: 1px solid #cdd5e0;
+    border-radius: 6px; margin-bottom: 16px; padding: 0 14px;
+    background: #fff; transition: border 0.2s;
+  }
+  .input-group:focus-within { border-color: #1a5fa8; }
+  .input-group .ico { color: #aaa; font-size: 16px; margin-right: 10px; flex-shrink:0; }
+  .input-group input {
+    flex: 1; border: none; outline: none; padding: 13px 0;
+    font-size: 14px; color: #333; background: transparent;
+  }
+  .input-group input::placeholder { color: #aaa; }
+  .eye-btn { background: none; border: none; cursor: pointer; color: #aaa; font-size: 16px; padding: 0; }
+  .sign-in-btn {
+    width: 100%; padding: 13px; background: #1a5fa8; color: #fff;
+    border: none; border-radius: 24px; font-size: 14px; font-weight: 700;
+    letter-spacing: 1px; cursor: pointer; margin-top: 6px; transition: background 0.2s;
+  }
+  .sign-in-btn:hover { background: #0d3d6e; }
+  .login-links { display: flex; justify-content: space-between; margin-top: 18px; }
+  .login-links a { color: #1a5fa8; font-size: 13px; text-decoration: none; }
+  .login-links a:hover { text-decoration: underline; }
+  .app-badges { display: flex; gap: 10px; margin-top: 36px; }
+  .badge {
+    border: 1px solid #cdd5e0; border-radius: 8px; padding: 7px 16px;
+    font-size: 12px; display: flex; align-items: center; gap: 7px;
+    background: #fff; cursor: pointer; color: #333;
+  }
+
+  /* ── SHARED TOP BAR ── */
+  .top-bar {
+    background: #fff; border-bottom: 1px solid #e5e9ef;
+    padding: 0 18px; height: 56px;
+    display: flex; align-items: center; justify-content: space-between;
+    position: sticky; top: 0; z-index: 100; box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+  }
+  .top-bar-left { display: flex; align-items: center; gap: 10px; }
+  .college-mini-logo {
+    width: 38px; height: 38px; border-radius: 50%; overflow: hidden; flex-shrink:0;
+  }
+  .college-mini-logo img { width: 100%; height: 100%; object-fit: cover; }
+  .college-name { font-size: 13px; font-weight: 700; color: #1a5fa8; text-transform: uppercase; letter-spacing: 0.3px; }
+  .top-bar-right { display: flex; align-items: center; gap: 4px; }
+  .net-badge { font-size: 11px; color: #27ae60; font-weight: 600; margin-right: 6px; white-space:nowrap; }
+  .icon-btn {
+    width: 34px; height: 34px; border-radius: 50%; border: none; background: #f0f3f8;
+    cursor: pointer; display: flex; align-items: center; justify-content: center;
+    font-size: 15px; color: #555; position: relative; transition: background 0.15s;
+  }
+  .icon-btn:hover { background: #e0e6f0; }
+  .notif-badge {
+    position: absolute; top: 1px; right: 1px; background: #e74c3c; color: #fff;
+    font-size: 8px; width: 14px; height: 14px; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; font-weight: 700;
+  }
+  .avatar-btn {
+    width: 34px; height: 34px; border-radius: 50%; background: #1a5fa8;
+    color: #fff; font-size: 12px; font-weight: 700; border: none; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+  }
+
+  /* ── STUDENT BAR ── */
+  .student-bar {
+    background: #fff; border-bottom: 1px solid #eef0f5;
+    padding: 10px 20px; display: flex; align-items: center; gap: 14px; flex-wrap: wrap;
+  }
+  .student-avatar {
+    width: 44px; height: 44px; border-radius: 50%; overflow: hidden;
+    flex-shrink: 0; border: 2px solid #d0ddf0;
+  }
+  .student-avatar img { width: 100%; height: 100%; object-fit: cover; }
+  .student-name { font-size: 14px; font-weight: 700; color: #222; }
+  .active-badge {
+    background: #27ae60; color: #fff; font-size: 11px; padding: 2px 8px;
+    border-radius: 10px; font-weight: 600; margin-left: 8px;
+  }
+  .student-meta { font-size: 13px; color: #555; margin-left: 4px; }
+
+  /* ── PAGE CONTENT ── */
+  .page-content { flex: 1; padding: 24px 22px; }
+  .search-bar-wrap { text-align: center; margin-bottom: 26px; }
+  .search-bar {
+    display: inline-flex; align-items: center; border: 1px solid #cdd5e0;
+    border-radius: 6px; background: #fff; padding: 0 14px; width: 100%; max-width: 540px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+  }
+  .search-bar input { border: none; outline: none; padding: 11px 10px; font-size: 14px; flex: 1; }
+  .search-bar button { background: none; border: none; cursor: pointer; color: #888; font-size: 16px; }
+
+  /* ── MODULE GRID ── */
+  .module-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 16px; }
+  .module-card {
+    background: #fff; border-radius: 10px; overflow: hidden;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.07); cursor: pointer;
+    transition: transform 0.15s, box-shadow 0.15s;
+  }
+  .module-card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,0.13); }
+  .card-top {
+    background: linear-gradient(160deg, #d9e8f6 0%, #b8cfe8 100%);
+    padding: 14px 14px 0; font-size: 13px; font-weight: 600; color: #333; min-height: 56px;
+  }
+  .card-icon-wrap {
+    display: flex; justify-content: center; padding: 10px 0 14px;
+    background: linear-gradient(160deg, #d9e8f6 0%, #b8cfe8 100%);
+  }
+  .card-icon {
+    width: 52px; height: 52px; border-radius: 50%; background: #fff;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); border: 2px solid #e0eaf5;
+  }
+
+  /* ── BREADCRUMB ── */
+  .breadcrumb { padding: 10px 22px; font-size: 13px; color: #666; display: flex; align-items: center; gap: 6px; }
+  .breadcrumb a { color: #1a5fa8; text-decoration: none; cursor: pointer; }
+  .breadcrumb a:hover { text-decoration: underline; }
+  .breadcrumb .sep { color: #bbb; }
+
+  /* ── FILTER FORM ── */
+  .filter-form-card {
+    background: #fff; border-radius: 8px; margin: 20px 22px 0;
+    box-shadow: 0 1px 6px rgba(0,0,0,0.06); padding: 24px;
+  }
+  .filter-row { display: flex; gap: 20px; align-items: flex-end; flex-wrap: wrap; }
+  .filter-group { flex: 1; min-width: 180px; }
+  .filter-group label { font-size: 11px; color: #888; display: block; margin-bottom: 5px; font-weight: 500; }
+  .filter-select {
+    width: 100%; padding: 11px 36px 11px 12px; border: 1px solid #cdd5e0;
+    border-radius: 4px; font-size: 14px; color: #333; background: #fff;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%23999'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 12px center; cursor: pointer;
+  }
+  .proceed-btn {
+    background: #1a5fa8; color: #fff; border: none; border-radius: 4px;
+    padding: 11px 36px; font-size: 13px; font-weight: 700; letter-spacing: 0.5px;
+    cursor: pointer; transition: background 0.2s; white-space: nowrap;
+  }
+  .proceed-btn:hover { background: #0d3d6e; }
+
+  /* ── GRADE CARD PAGE ── */
+  .filter-row-inline {
+    display: flex; gap: 16px; align-items: flex-end; margin: 16px 22px 0; flex-wrap: wrap;
+  }
+  .filter-row-inline .filter-group { flex: 0 0 220px; }
+  .print-btn-wrap { text-align: center; margin: 18px 0 10px; }
+  .print-btn {
+    background: #1a5fa8; color: #fff; border: none; border-radius: 4px;
+    padding: 10px 28px; font-size: 13px; font-weight: 600; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+
+  /* ── GRADE CARD DOCUMENT ── */
+  .grade-doc {
+    margin: 10px 22px 24px; border: 1px solid #bbb; background: #fff;
+    font-size: 12px; color: #000;
+  }
+  .grade-doc-header {
+    display: grid; grid-template-columns: 72px 1fr 72px;
+    align-items: center; border-bottom: 1px solid #ccc; padding: 10px 14px; gap: 10px;
+  }
+  .doc-logo-img { width: 60px; height: 60px; object-fit: contain; display: block; margin: auto; }
+  .grade-doc-header .center-text { text-align: center; }
+  .grade-doc-header .center-text .trust { font-size: 12px; font-weight: 600; color: #000; }
+  .grade-doc-header .center-text .college-h { font-size: 14px; color: #1a5fa8; font-weight: 800; }
+  .grade-doc-header .center-text p { font-size: 11px; color: #444; margin-top: 2px; }
+  .sog-title { text-align: center; font-size: 14px; font-weight: 700; color: #1a5fa8; padding: 8px; border-bottom: 1px solid #ccc; }
+
+  .student-info-outer { display: grid; grid-template-columns: 1fr 76px; border-bottom: 1px solid #ccc; }
+  .student-info-grid { display: grid; grid-template-columns: 1fr 1fr; }
+  .info-col { padding: 8px 14px; }
+  .info-row { display: flex; gap: 6px; margin-bottom: 4px; font-size: 12px; align-items: baseline; }
+  .info-label { color: #444; min-width: 130px; flex-shrink: 0; }
+  .info-value { font-weight: 600; color: #000; }
+  .student-photo-cell {
+    display: flex; align-items: center; justify-content: center;
+    padding: 8px; border-left: 1px solid #ccc;
+  }
+  .student-photo { width: 68px; height: 84px; object-fit: cover; border: 1px solid #ccc; display: block; }
+
+  .grades-table { width: 100%; border-collapse: collapse; font-size: 11.5px; }
+  .grades-table th, .grades-table td { border: 1px solid #ccc; padding: 5px 7px; text-align: left; }
+  .grades-table th { background: #f0f0f0; font-weight: 700; font-size: 11px; text-align: center; }
+  .grades-table td:first-child { text-align: center; width: 32px; }
+  .grades-table td:nth-child(4), .grades-table td:nth-child(5),
+  .grades-table td:nth-child(6), .grades-table td:nth-child(7),
+  .grades-table td:nth-child(8) { text-align: center; }
+  .section-row td { font-weight: 700; background: #f5f5f5; padding: 5px 7px; }
+
+  .summary-table { width: 100%; border-collapse: collapse; font-size: 12px; }
+  .summary-table th, .summary-table td { border: 1px solid #ccc; padding: 6px 10px; text-align: center; }
+  .summary-table th { background: #f0f0f0; font-weight: 700; }
+
+  .result-status { padding: 10px 14px; font-size: 13px; font-weight: 700; border-top: 1px solid #eee; }
+  .result-note { padding: 0 14px 8px; font-size: 12px; color: #444; }
+  .result-date { padding: 4px 14px 8px; font-size: 12px; font-weight: 600; }
+  .controller-row { text-align: right; padding: 8px 14px 14px; font-size: 12px; font-weight: 600; }
+
+  /* ── FOOTER ── */
+  .site-footer {
+    background: #3a6eb5; padding: 16px 24px;
+    display: flex; align-items: center; justify-content: center; gap: 18px; flex-wrap: wrap;
+    margin-top: auto;
+  }
+  .footer-text { color: #fff; font-size: 13px; display: flex; align-items: center; gap: 8px; }
+  .footer-eduplus { font-weight: 800; color: #ffd700; font-size: 15px; }
+  .social-icons { display: flex; gap: 10px; }
+  .social-icon {
+    width: 28px; height: 28px; border-radius: 50%; background: rgba(255,255,255,0.22);
+    display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px;
+    cursor: pointer; transition: background 0.15s; font-weight: 700;
+  }
+  .social-icon:hover { background: rgba(255,255,255,0.42); }
+
+  .support-btn {
+    position: fixed; bottom: 20px; left: 20px; background: #1a5fa8; color: #fff;
+    border: none; border-radius: 20px; padding: 8px 18px; font-size: 13px;
+    cursor: pointer; z-index: 999; box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  @media print {
+    .top-bar, .student-bar, .breadcrumb, .filter-row-inline, .print-btn-wrap, .site-footer, .support-btn { display: none !important; }
+    .grade-doc { margin: 0; border: none; }
+  }
+
+/* ══ MOBILE RESPONSIVENESS ══ */
+@media (max-width: 768px) {
+  /* Login */
+  #login { flex-direction: column !important; }
+  .login-left { width: 100% !important; padding: 20px 16px !important; }
+  .login-banner { max-width: 100% !important; }
+  .login-right { width: 100% !important; padding: 28px 20px 40px !important; }
+  .college-logo { width: 70px !important; height: 70px !important; }
+  .login-title { font-size: 18px !important; margin-bottom: 20px !important; }
+  .app-badges { flex-wrap: wrap; justify-content: center; }
+
+  /* Top bar */
+  .college-name { display: none; }
+  .net-badge { display: none !important; }
+  .top-bar { padding: 0 10px !important; }
+  .top-bar-right { gap: 2px !important; }
+  .icon-btn { width: 30px !important; height: 30px !important; font-size: 13px !important; }
+  .avatar-btn { width: 30px !important; height: 30px !important; font-size: 11px !important; }
+
+  /* Student bar */
+  .student-bar { padding: 8px 12px !important; gap: 8px !important; flex-wrap: wrap; }
+  .student-meta { font-size: 11px !important; margin-left: 0 !important; }
+  .student-name { font-size: 13px !important; }
+  .student-avatar { width: 36px !important; height: 36px !important; }
+
+  /* Module grid */
+  .module-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+  .card-top { font-size: 12px !important; min-height: 44px !important; padding: 10px 10px 0 !important; }
+  .card-icon { width: 42px !important; height: 42px !important; font-size: 20px !important; }
+  .card-icon-wrap { padding: 8px 0 10px !important; }
+
+  /* Page content */
+  .page-content { padding: 16px 12px !important; }
+  .breadcrumb { padding: 8px 12px !important; font-size: 12px !important; flex-wrap: wrap; }
+
+  /* Filter */
+  .filter-form-card { margin: 12px !important; padding: 16px !important; }
+  .filter-row { flex-direction: column !important; gap: 12px !important; }
+  .filter-group { min-width: unset !important; width: 100% !important; }
+  .proceed-btn { width: 100% !important; text-align: center; }
+  .filter-row-inline { margin: 12px !important; flex-direction: column !important; gap: 10px !important; }
+  .filter-row-inline .filter-group { flex: unset !important; width: 100% !important; }
+
+  /* Grade card document */
+  .grade-doc { margin: 8px !important; font-size: 10px !important; overflow-x: auto; }
+  .grade-doc-header { grid-template-columns: 48px 1fr 48px !important; padding: 8px !important; }
+  .doc-logo-img { width: 42px !important; height: 42px !important; }
+  .grade-doc-header .center-text .college-h { font-size: 11px !important; }
+  .grade-doc-header .center-text .trust { font-size: 10px !important; }
+  .grade-doc-header .center-text p { font-size: 9px !important; }
+  .sog-title { font-size: 12px !important; }
+  .student-info-outer { grid-template-columns: 1fr 60px !important; }
+  .student-info-grid { grid-template-columns: 1fr !important; }
+  .info-col { padding: 6px 10px !important; }
+  .info-row { font-size: 10px !important; }
+  .info-label { min-width: 100px !important; }
+  .student-photo { width: 54px !important; height: 68px !important; }
+  .grades-table { font-size: 10px !important; }
+  .grades-table th, .grades-table td { padding: 3px 5px !important; }
+  .summary-table { font-size: 10px !important; }
+  .summary-table th, .summary-table td { padding: 4px 6px !important; }
+  .result-status { font-size: 11px !important; }
+  .print-btn-wrap { margin: 10px 0 6px !important; }
+
+  /* Footer */
+  .site-footer { padding: 12px !important; gap: 10px !important; }
+  .footer-text { font-size: 12px !important; }
+}
+
+@media (max-width: 400px) {
+  .module-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 8px !important; }
+  .login-right { padding: 20px 14px 30px !important; }
+}
+
+.pdf-export-stage {
+  position: fixed;
+  left: -10000px;
+  top: 0;
+  width: 794px;
+  pointer-events: none;
+  opacity: 0;
+  background: #fff;
+}
+
+.pdf-export-page {
+  overflow: visible;
+}
+
+.pdf-export-page .grade-doc-header,
+.pdf-export-page .sog-title,
+.pdf-export-page .student-info-outer,
+.pdf-export-page .grades-table,
+.pdf-export-page .summary-table,
+.pdf-export-page .result-status,
+.pdf-export-page .result-note,
+.pdf-export-page .result-date,
+.pdf-export-page .controller-row,
+.pdf-export-page .pdf-disclaimer {
+  width: 100%;
+}
+
+.pdf-export-page .pdf-disclaimer {
+  padding: 18px 14px 10px;
+  font-size: 11px;
+  font-style: italic;
+  line-height: 1.35;
+  color: #222;
+}
